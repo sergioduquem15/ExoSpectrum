@@ -1,0 +1,2 @@
+https://lweb.cfa.harvard.edu/HITRAN/HITRAN2012/HITRAN2012/By-Molecule/Compressed-files/
+https://pyratbay.readthedocs.io/en/latest/spec_tutorial.html
