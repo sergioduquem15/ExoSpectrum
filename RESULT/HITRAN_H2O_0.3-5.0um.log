@@ -6,10 +6,10 @@
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Read command-line arguments from configuration file:
-'/work/HITRAN/tli_hitran_H2O.cfg'
+'/work/ExoSpectrum/HITRAN/tli_hitran_H2O.cfg'
 
 Reading input database files:
-- /work/HITRAN/01_hit12.par
+- /work/ExoSpectrum/HITRAN/01_hit12.par
 There are 1 input database file(s).
 
 OS endianness:  little
@@ -79,4 +79,4 @@ Transitions per isotope:
 [67168 24906 18143  8229   655   173]
 
 Writing 119,274 transition lines.
-Generated TLI file: '/work/RESULT/HITRAN_H2O_0.3-5.0um.tli'.
+Generated TLI file: '/work/ExoSpectrum/RESULT/HITRAN_H2O_0.3-5.0um.tli'.
