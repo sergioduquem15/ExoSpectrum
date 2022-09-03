@@ -1,0 +1,82 @@
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Python Radiative Transfer in a Bayesian framework (Pyrat Bay).
+  Version 1.0.2.
+  Copyright (c) 2021-2022 Patricio Cubillos.
+  Pyrat Bay is open-source software under the GNU GPLv2 lincense (see LICENSE).
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Read command-line arguments from configuration file:
+'/work/HITRAN/tli_hitran_H2O.cfg'
+
+Reading input database files:
+- /work/HITRAN/01_hit12.par
+There are 1 input database file(s).
+
+OS endianness:  little
+Initial TLI wavelength (um):   1.000 (10000.000 cm-1)
+Final   TLI wavelength (um):  14.000 (  714.286 cm-1)
+There are 1 different database(s).
+
+Reading and writting partition function info.
+  Database (1/1): 'HITRAN H2O' (H2O molecule)
+    Number of temperatures: 503
+    Number of isotopes: 9
+    Temperatures (K): [   1.0,    5.0, ..., 5000.0]
+    Isotope (1/9): '161'
+      Mass (u):         18.0106
+      Isotopic ratio:    0.9973
+      Part. Function:  [1.00e+00, 1.01e+00, ..., 8.42e+04]
+    Isotope (2/9): '181'
+      Mass (u):         20.0148
+      Isotopic ratio:  0.001999
+      Part. Function:  [1.00e+00, 1.01e+00, ..., 7.81e+04]
+    Isotope (3/9): '171'
+      Mass (u):         19.0148
+      Isotopic ratio:  0.0003719
+      Part. Function:  [6.00e+00, 6.06e+00, ..., 4.69e+05]
+    Isotope (4/9): '162'
+      Mass (u):         19.0168
+      Isotopic ratio:  0.0003107
+      Part. Function:  [6.00e+00, 6.21e+00, ..., 4.90e+05]
+    Isotope (5/9): '182'
+      Mass (u):         21.0211
+      Isotopic ratio:  6.23e-07
+      Part. Function:  [6.00e+00, 6.22e+00, ..., 4.76e+05]
+    Isotope (6/9): '172'
+      Mass (u):         20.0211
+      Isotopic ratio:  1.158e-07
+      Part. Function:  [3.60e+01, 3.73e+01, ..., 2.75e+06]
+    Isotope (7/9): '262'
+      Mass (u):         20.0210
+      Isotopic ratio:  2.42e-08
+      Part. Function:  [6.00e+00, 6.34e+00, ..., 9.65e+05]
+    Isotope (8/9): '282'
+      Mass (u):         22.0000
+      Isotopic ratio:         0
+      Part. Function:  [6.00e+00, 6.35e+00, ..., 9.93e+05]
+    Isotope (9/9): '272'
+      Mass (u):         21.0000
+      Isotopic ratio:         0
+      Part. Function:  [3.60e+01, 3.81e+01, ..., 5.87e+06]
+Cumulative number of isotopes per database: [0, 9]
+
+Extracting line transition info.
+  Process HITRAN H2O database between records 14,146 and 133,502.
+    10.0% completed.
+    20.0% completed.
+    30.0% completed.
+    40.0% completed.
+    50.0% completed.
+    60.0% completed.
+    70.0% completed.
+    80.0% completed.
+    90.0% completed.
+   100.0% completed.
+  Isotope in-database indices: [0 1 2 3 4 5]
+  Isotope correlative indices: [0 1 2 3 4 5]
+
+Transitions per isotope:
+[67168 24906 18143  8229   655   173]
+
+Writing 119,274 transition lines.
+Generated TLI file: '/work/RESULT/HITRAN_H2O_0.3-5.0um.tli'.
