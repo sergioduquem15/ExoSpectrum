@@ -3,12 +3,3 @@ Warnings log:
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
     Final wavenumber modified from 33333.3333 cm-1 (input)
                                 to 33333.0000 cm-1 (Pyrat).
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-    TLI wavenumber range (714.29 - 10000.00 cm^-1) does not cover the full Pyrat
-wavenumber range (2000.00 - 33333.33 cm^-1).
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-    The wavenumber range [20.000, 16480.000] cm-1 of the CS file:
-    '/root/venv/lib/python3.7/site-packages/pyratbay/data/CIA/CIA_Borysow_H2H2_0060-7000K_0.6-500um.dat',
-    does not cover the Pyrat's wavenumber range: [2000.000, 33333.000] cm-1.
