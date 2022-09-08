@@ -1,0 +1,16 @@
+# Atmospheric composition and abundances:
+species = H2 CH4 CO2 H2O N2O
+uniform = 8.5E-01 9.5E-02 9.5E-03 3.2E-03 1.6E-03
+
+# Wavelength sampling boundaries:
+wllow  = 0.3 um
+wlhigh = 5.0 um
+
+# System parameters:
+rstar = 0.3 rsun
+tstar = 3000.0
+mstar = 300.0 mjup
+smaxis = 0.028 au
+mplanet = 0.054 mjup
+rplanet = 0.33 rjup
+tint = 100.0
