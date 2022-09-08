@@ -1,0 +1,17 @@
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Python Radiative Transfer in a Bayesian framework (Pyrat Bay).
+  Version 1.0.2.
+  Copyright (c) 2021-2022 Patricio Cubillos.
+  Pyrat Bay is open-source software under the GNU GPLv2 lincense (see LICENSE).
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Read command-line arguments from configuration file:
+'/work/ExoSpectrum/SPECTRUM/spectrum_transmission.cfg'
+Creating 1000-layer atmospheric model between 1.4e+09 and 1.0e+00 barye.
+
+Computed isothermal temperature model.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Error in module: 'driver.py', function: 'check_atm', line: 281
+    Undefined chemistry model (chemistry).
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

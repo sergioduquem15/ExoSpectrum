@@ -1,3 +1,23 @@
 https://lweb.cfa.harvard.edu/HITRAN/HITRAN2012/HITRAN2012/By-Molecule/Compressed-files/
 https://lweb.cfa.harvard.edu/HITRAN/HITRAN2012/HITRAN2012/By-Molecule/ByMolecule_Readme.pdf
 https://pyratbay.readthedocs.io/en/latest/spec_tutorial.html
+
+
+# System parameters:
+rstar = 0.3 rsun
+tstar = 3000.0
+mstar = 300.0 mjup
+smaxis = 0.028 au
+mplanet = 0.054 mjup
+rplanet = 0.33 rjup
+tint = 100.0
+
+# Pressure at the top and bottom of the atmosphere, and number of layers:
+ptop    = 1.0e-6 bar
+pbottom = 1400.0 bar
+nlayers = 1000
+
+# Temperature-profile model, select from [isothermal tcea madhu]
+# tpars The temperature at all layers.
+tmodel = isothermal
+tpars  = 500.0

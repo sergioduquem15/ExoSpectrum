@@ -1,0 +1,15 @@
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Python Radiative Transfer in a Bayesian framework (Pyrat Bay).
+  Version 1.0.2.
+  Copyright (c) 2021-2022 Patricio Cubillos.
+  Pyrat Bay is open-source software under the GNU GPLv2 lincense (see LICENSE).
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Read command-line arguments from configuration file:
+'/work/ExoSpectrum/HITRAN/tli_hitran.cfg'
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Error in module: 'parser.py', function: 'parse', line: 549
+    Opacity database file (dblist) does not exist:
+'/work/ExoSpectrum/HITRAN/CO2_hit12.par'
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
