@@ -1,6 +1,8 @@
+#Tipo de exoplaneta:
+ST
 # Atmospheric composition and abundances:
-species = H2 CH4 CO2 H2O N2O
-uniform = 8.5E-01 9.5E-02 9.5E-03 3.2E-03 1.6E-03
+species = N2 H2O N2O CH4
+uniform = 8.6E-01 8.6E-02 9.6E-03 1.9E-03
 
 # Wavelength sampling boundaries:
 wllow  = 0.3 um
