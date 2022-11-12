@@ -1,0 +1,441 @@
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Python Radiative Transfer in a Bayesian framework (Pyrat Bay).
+  Version 1.0.2.
+  Copyright (c) 2021-2022 Patricio Cubillos.
+  Pyrat Bay is open-source software under the GNU GPLv2 lincense (see LICENSE).
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Read command-line arguments from configuration file:
+'./ExoSpectrum/HITRAN/tli_hitran.cfg'
+
+Reading input database files:
+- /work/ExoSpectrum/HITRAN/CO_hit12.par
+- /work/ExoSpectrum/HITRAN/CO2_hit12.par
+- /work/ExoSpectrum/HITRAN/H2_hit12.par
+- /work/ExoSpectrum/HITRAN/H2O_hit12.par
+- /work/ExoSpectrum/HITRAN/CH4_hit12.par
+- /work/ExoSpectrum/HITRAN/N2O_hit08.par
+- /work/ExoSpectrum/HITRAN/N2_hit12.par
+- /work/ExoSpectrum/HITRAN/O3_hit12.par
+- /work/ExoSpectrum/HITRAN/CH3Cl_hit12.par
+There are 9 input database file(s).
+
+OS endianness:  little
+Initial TLI wavelength (um):   0.300 (33333.333 cm-1)
+Final   TLI wavelength (um):   5.000 ( 2000.000 cm-1)
+There are 8 different database(s).
+
+Reading and writting partition function info.
+  Database (1/8): 'HITRAN CO' (CO molecule)
+    Number of temperatures: 903
+    Number of isotopes: 9
+    Temperatures (K): [   1.0,    5.0, ..., 9000.0]
+    Isotope (1/9): '26'
+      Mass (u):         27.9949
+      Isotopic ratio:    0.9865
+      Part. Function:  [1.01e+00, 2.18e+00, ..., 1.21e+04]
+    Isotope (2/9): '36'
+      Mass (u):         28.9983
+      Isotopic ratio:   0.01108
+      Part. Function:  [2.03e+00, 4.53e+00, ..., 2.57e+04]
+    Isotope (3/9): '28'
+      Mass (u):         29.9992
+      Isotopic ratio:  0.001978
+      Part. Function:  [1.02e+00, 2.27e+00, ..., 1.29e+04]
+    Isotope (4/9): '27'
+      Mass (u):         28.9991
+      Isotopic ratio:  0.0003679
+      Part. Function:  [6.08e+00, 1.34e+01, ..., 7.52e+04]
+    Isotope (5/9): '38'
+      Mass (u):         31.0025
+      Isotopic ratio:  2.223e-05
+      Part. Function:  [2.04e+00, 4.72e+00, ..., 2.77e+04]
+    Isotope (6/9): '37'
+      Mass (u):         30.0025
+      Isotopic ratio:  4.133e-06
+      Part. Function:  [1.22e+01, 2.78e+01, ..., 1.60e+05]
+    Isotope (7/9): '46'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [1.02e+00, 2.34e+00, ..., 1.36e+04]
+    Isotope (8/9): '48'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [1.02e+00, 2.44e+00, ..., 1.47e+04]
+    Isotope (9/9): '47'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [6.13e+00, 1.44e+01, ..., 8.50e+04]
+  Database (2/8): 'HITRAN CO2' (CO2 molecule)
+    Number of temperatures: 353
+    Number of isotopes: 13
+    Temperatures (K): [   1.0,    5.0, ..., 3500.0]
+    Isotope (1/13): '626'
+      Mass (u):         43.9898
+      Isotopic ratio:    0.9842
+      Part. Function:  [1.17e+00, 4.62e+00, ..., 2.09e+05]
+    Isotope (2/13): '636'
+      Mass (u):         44.9932
+      Isotopic ratio:   0.01106
+      Part. Function:  [2.34e+00, 9.25e+00, ..., 4.47e+05]
+    Isotope (3/13): '628'
+      Mass (u):         45.9941
+      Isotopic ratio:  0.003947
+      Part. Function:  [2.26e+00, 9.78e+00, ..., 4.35e+05]
+    Isotope (4/13): '627'
+      Mass (u):         44.9940
+      Isotopic ratio:  0.000734
+      Part. Function:  [1.33e+01, 5.71e+01, ..., 2.50e+06]
+    Isotope (5/13): '638'
+      Mass (u):         46.9974
+      Isotopic ratio:  4.434e-05
+      Part. Function:  [4.52e+00, 1.96e+01, ..., 9.33e+05]
+    Isotope (6/13): '637'
+      Mass (u):         45.9974
+      Isotopic ratio:  8.246e-06
+      Part. Function:  [2.65e+01, 1.14e+02, ..., 5.35e+06]
+    Isotope (7/13): '828'
+      Mass (u):         47.9983
+      Isotopic ratio:  3.957e-06
+      Part. Function:  [1.25e+00, 5.18e+00, ..., 2.52e+05]
+    Isotope (8/13): '728'
+      Mass (u):         46.9983
+      Isotopic ratio:  1.472e-06
+      Part. Function:  [1.39e+01, 6.05e+01, ..., 2.74e+06]
+    Isotope (9/13): '727'
+      Mass (u):         45.9983
+      Isotopic ratio:  1.368e-07
+      Part. Function:  [4.12e+01, 1.76e+02, ..., 8.29e+06]
+    Isotope (10/13): '838'
+      Mass (u):         49.0017
+      Isotopic ratio:  4.446e-08
+      Part. Function:  [2.50e+00, 1.04e+01, ..., 5.39e+05]
+    Isotope (11/13): '837'
+      Mass (u):         48.0026
+      Isotopic ratio:  1.654e-08
+      Part. Function:  [2.78e+01, 1.21e+02, ..., 5.88e+06]
+    Isotope (12/13): '737'
+      Mass (u):         47.0016
+      Isotopic ratio:  1.538e-09
+      Part. Function:  [8.25e+01, 3.53e+02, ..., 1.78e+07]
+    Isotope (13/13): '646'
+      Mass (u):         46.0000
+      Isotopic ratio:         0
+      Part. Function:  [1.17e+00, 4.62e+00, ..., 2.38e+05]
+  Database (3/8): 'HITRAN N2' (N2 molecule)
+    Number of temperatures: 903
+    Number of isotopes: 3
+    Temperatures (K): [   1.0,    5.0, ..., 9000.0]
+    Isotope (1/3): '44'
+      Mass (u):         28.0061
+      Isotopic ratio:    0.9927
+      Part. Function:  [6.03e+00, 9.85e+00, ..., 3.92e+04]
+    Isotope (2/3): '45'
+      Mass (u):         29.0032
+      Isotopic ratio:  0.007478
+      Part. Function:  [6.07e+00, 1.31e+01, ..., 5.42e+04]
+    Isotope (3/3): '55'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [1.04e+00, 4.33e+00, ..., 1.88e+04]
+  Database (4/8): 'HITRAN H2O' (H2O molecule)
+    Number of temperatures: 503
+    Number of isotopes: 9
+    Temperatures (K): [   1.0,    5.0, ..., 5000.0]
+    Isotope (1/9): '161'
+      Mass (u):         18.0106
+      Isotopic ratio:    0.9973
+      Part. Function:  [1.00e+00, 1.01e+00, ..., 8.42e+04]
+    Isotope (2/9): '181'
+      Mass (u):         20.0148
+      Isotopic ratio:  0.001999
+      Part. Function:  [1.00e+00, 1.01e+00, ..., 7.81e+04]
+    Isotope (3/9): '171'
+      Mass (u):         19.0148
+      Isotopic ratio:  0.0003719
+      Part. Function:  [6.00e+00, 6.06e+00, ..., 4.69e+05]
+    Isotope (4/9): '162'
+      Mass (u):         19.0168
+      Isotopic ratio:  0.0003107
+      Part. Function:  [6.00e+00, 6.21e+00, ..., 4.90e+05]
+    Isotope (5/9): '182'
+      Mass (u):         21.0211
+      Isotopic ratio:  6.23e-07
+      Part. Function:  [6.00e+00, 6.22e+00, ..., 4.76e+05]
+    Isotope (6/9): '172'
+      Mass (u):         20.0211
+      Isotopic ratio:  1.158e-07
+      Part. Function:  [3.60e+01, 3.73e+01, ..., 2.75e+06]
+    Isotope (7/9): '262'
+      Mass (u):         20.0210
+      Isotopic ratio:  2.42e-08
+      Part. Function:  [6.00e+00, 6.34e+00, ..., 9.65e+05]
+    Isotope (8/9): '282'
+      Mass (u):         22.0000
+      Isotopic ratio:         0
+      Part. Function:  [6.00e+00, 6.35e+00, ..., 9.93e+05]
+    Isotope (9/9): '272'
+      Mass (u):         21.0000
+      Isotopic ratio:         0
+      Part. Function:  [3.60e+01, 3.81e+01, ..., 5.87e+06]
+  Database (5/8): 'HITRAN CH4' (CH4 molecule)
+    Number of temperatures: 353
+    Number of isotopes: 4
+    Temperatures (K): [   1.0,    5.0, ..., 3500.0]
+    Isotope (1/4): '211'
+      Mass (u):         16.0313
+      Isotopic ratio:    0.9883
+      Part. Function:  [5.00e+00, 5.44e+00, ..., 7.08e+06]
+    Isotope (2/4): '311'
+      Mass (u):         17.0347
+      Isotopic ratio:    0.0111
+      Part. Function:  [1.00e+01, 1.09e+01, ..., 1.24e+07]
+    Isotope (3/4): '212'
+      Mass (u):         17.0376
+      Isotopic ratio:  0.0006158
+      Part. Function:  [8.14e+00, 1.83e+01, ..., 7.59e+07]
+    Isotope (4/4): '312'
+      Mass (u):         18.0409
+      Isotopic ratio:  6.918e-06
+      Part. Function:  [1.63e+01, 3.67e+01, ..., 1.52e+08]
+  Database (6/8): 'HITRAN N2O' (N2O molecule)
+    Number of temperatures: 353
+    Number of isotopes: 5
+    Temperatures (K): [   1.0,    5.0, ..., 3500.0]
+    Isotope (1/5): '446'
+      Mass (u):         44.0011
+      Isotopic ratio:    0.9903
+      Part. Function:  [1.83e+01, 7.77e+01, ..., 3.39e+06]
+    Isotope (2/5): '456'
+      Mass (u):         44.9981
+      Isotopic ratio:  0.003641
+      Part. Function:  [1.22e+01, 5.18e+01, ..., 3.38e+06]
+    Isotope (3/5): '546'
+      Mass (u):         44.9981
+      Isotopic ratio:  0.003641
+      Part. Function:  [1.26e+01, 5.36e+01, ..., 3.39e+06]
+    Isotope (4/5): '448'
+      Mass (u):         46.0053
+      Isotopic ratio:  0.001986
+      Part. Function:  [1.92e+01, 8.21e+01, ..., 5.27e+06]
+    Isotope (5/5): '447'
+      Mass (u):         45.0053
+      Isotopic ratio:  0.0003693
+      Part. Function:  [1.13e+02, 4.80e+02, ..., 3.02e+07]
+  Database (7/8): 'HITRAN O3' (O3 molecule)
+    Number of temperatures: 353
+    Number of isotopes: 18
+    Temperatures (K): [   1.0,    5.0, ..., 3500.0]
+    Isotope (1/18): '666'
+      Mass (u):         47.9847
+      Isotopic ratio:    0.9929
+      Part. Function:  [7.85e-01, 7.55e+00, ..., 4.53e+06]
+    Isotope (2/18): '668'
+      Mass (u):         49.9890
+      Isotopic ratio:  0.003982
+      Part. Function:  [1.66e+00, 1.61e+01, ..., 1.01e+07]
+    Isotope (3/18): '686'
+      Mass (u):         49.9890
+      Isotopic ratio:  0.001991
+      Part. Function:  [8.19e-01, 7.88e+00, ..., 5.01e+06]
+    Isotope (4/18): '667'
+      Mass (u):         48.9890
+      Isotopic ratio:  0.0007405
+      Part. Function:  [9.69e+00, 9.36e+01, ..., 5.75e+07]
+    Isotope (5/18): '676'
+      Mass (u):         48.9890
+      Isotopic ratio:  0.0003702
+      Part. Function:  [4.81e+00, 4.63e+01, ..., 2.86e+07]
+    Isotope (6/18): '886'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [1.73e+00, 1.68e+01, ..., 1.12e+07]
+    Isotope (7/18): '868'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [8.79e-01, 8.58e+00, ..., 5.61e+06]
+    Isotope (8/18): '678'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [1.02e+01, 9.87e+01, ..., 6.38e+07]
+    Isotope (9/18): '768'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [1.03e+01, 9.98e+01, ..., 6.40e+07]
+    Isotope (10/18): '786'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [1.01e+01, 9.77e+01, ..., 6.36e+07]
+    Isotope (11/18): '776'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [5.95e+01, 5.74e+02, ..., 3.63e+08]
+    Isotope (12/18): '767'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [3.00e+01, 2.90e+02, ..., 1.82e+08]
+    Isotope (13/18): '888'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [9.18e-01, 8.97e+00, ..., 6.23e+06]
+    Isotope (14/18): '887'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [1.07e+01, 1.04e+02, ..., 7.10e+07]
+    Isotope (15/18): '878'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [5.39e+00, 5.27e+01, ..., 3.56e+07]
+    Isotope (16/18): '778'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [6.30e+01, 6.13e+02, ..., 4.05e+08]
+    Isotope (17/18): '787'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [3.13e+01, 3.03e+02, ..., 2.02e+08]
+    Isotope (18/18): '777'
+      Mass (u):          0.0000
+      Isotopic ratio:         0
+      Part. Function:  [1.84e+02, 1.78e+03, ..., 1.15e+09]
+  Database (8/8): 'HITRAN CH3Cl' (CH3Cl molecule)
+    Number of temperatures: 353
+    Number of isotopes: 2
+    Temperatures (K): [   1.0,    5.0, ..., 3500.0]
+    Isotope (1/2): '215'
+      Mass (u):         49.9923
+      Isotopic ratio:    0.7489
+      Part. Function:  [2.29e+01, 1.60e+02, ..., 2.45e+09]
+    Isotope (2/2): '217'
+      Mass (u):         51.9894
+      Isotopic ratio:    0.2395
+      Part. Function:  [2.32e+01, 1.62e+02, ..., 2.49e+09]
+Cumulative number of isotopes per database: [0, 9, 22, 25, 34, 38, 43, 61, 63]
+
+Extracting line transition info.
+  Process HITRAN CO database between records 1,095 and 4,605.
+    10.0% completed.
+    20.0% completed.
+    30.0% completed.
+    40.0% completed.
+    50.0% completed.
+    60.0% completed.
+    70.0% completed.
+    80.0% completed.
+    90.0% completed.
+   100.0% completed.
+  Isotope in-database indices: [0 1 2 3 4 5]
+  Isotope correlative indices: [0 1 2 3 4 5]
+  Process HITRAN CO2 database between records 133,937 and 471,846.
+    10.0% completed.
+    20.0% completed.
+    30.0% completed.
+    40.0% completed.
+    50.0% completed.
+    60.0% completed.
+    70.0% completed.
+    80.0% completed.
+    90.0% completed.
+   100.0% completed.
+  Isotope in-database indices: [0 1 2 3 4 5 6 7 8 9]
+  Isotope correlative indices: [ 9 10 11 12 13 14 15 16 17 18]
+  Process HITRAN N2 database between records 158 and 1,267.
+    10.0% completed.
+    20.0% completed.
+    30.0% completed.
+    40.0% completed.
+    50.0% completed.
+    60.0% completed.
+    70.0% completed.
+    80.0% completed.
+    90.0% completed.
+   100.0% completed.
+  Isotope in-database indices: [0 1]
+  Isotope correlative indices: [22 23]
+  Process HITRAN H2O database between records 30,159 and 224,514.
+    10.0% completed.
+    20.0% completed.
+    30.0% completed.
+    40.0% completed.
+    50.0% completed.
+    60.0% completed.
+    70.0% completed.
+    80.0% completed.
+    90.0% completed.
+   100.0% completed.
+  Isotope in-database indices: [0 1 2 3 4]
+  Isotope correlative indices: [25 26 27 28 29]
+  Process HITRAN CH4 database between records 165,368 and 468,012.
+    10.0% completed.
+    20.0% completed.
+    30.0% completed.
+    40.0% completed.
+    50.0% completed.
+    60.0% completed.
+    70.0% completed.
+    80.0% completed.
+    90.0% completed.
+   100.0% completed.
+  Isotope in-database indices: [0 1 2]
+  Isotope correlative indices: [34 35 36]
+  Process HITRAN N2O database between records 16,675 and 47,842.
+    10.0% completed.
+    20.0% completed.
+    30.0% completed.
+    40.0% completed.
+    50.0% completed.
+    60.0% completed.
+    70.0% completed.
+    80.0% completed.
+    90.0% completed.
+   100.0% completed.
+  Isotope in-database indices: [0 1 2 3 4]
+  Isotope correlative indices: [38 39 40 41 42]
+  Process HITRAN N2 database between records 158 and 1,267.
+    10.0% completed.
+    20.0% completed.
+    30.0% completed.
+    40.0% completed.
+    50.0% completed.
+    60.0% completed.
+    70.0% completed.
+    80.0% completed.
+    90.0% completed.
+   100.0% completed.
+  Isotope in-database indices: [0 1]
+  Isotope correlative indices: [22 23]
+  Process HITRAN O3 database between records 248,821 and 422,115.
+    10.0% completed.
+    20.0% completed.
+    30.0% completed.
+    40.0% completed.
+    50.0% completed.
+    60.0% completed.
+    70.0% completed.
+    80.0% completed.
+    90.0% completed.
+   100.0% completed.
+  Isotope in-database indices: [0 1 2 3 4]
+  Isotope correlative indices: [43 44 45 46 47]
+  Process HITRAN CH3Cl database between records 150,144 and 212,495.
+    10.0% completed.
+    20.0% completed.
+    30.0% completed.
+    40.0% completed.
+    50.0% completed.
+    60.0% completed.
+    70.0% completed.
+    80.0% completed.
+    90.0% completed.
+   100.0% completed.
+  Isotope in-database indices: [0 1]
+  Isotope correlative indices: [61 62]
+
+Transitions per isotope:
+[   746    597    577    561    513    498 128708  50553  82509  49517
+  16402   2037   4522    667   2662    120   1980    230 126686  34434
+  23185   9597    219 224044  31874  45972  21769   2668   2843   2675
+   1153 138274  23521   8822   1773    860  33517  28820]
+
+Writing 1,106,105 transition lines.
+Generated TLI file: '/work/ExoSpectrum/RESULT/HITRAN.tli'.

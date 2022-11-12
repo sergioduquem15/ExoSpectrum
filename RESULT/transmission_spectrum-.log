@@ -1,0 +1,620 @@
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Python Radiative Transfer in a Bayesian framework (Pyrat Bay).
+  Version 1.0.2.
+  Copyright (c) 2021-2022 Patricio Cubillos.
+  Pyrat Bay is open-source software under the GNU GPLv2 lincense (see LICENSE).
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Read command-line arguments from configuration file:
+'./ExoSpectrum/SPECTRUM/spectrum_transmission.cfg'
+Check spectrum done.
+
+Generating wavenumber array.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Warning:
+    Final wavenumber modified from 33333.3333 cm-1 (input)
+                                to 33333.0000 cm-1 (Pyrat).
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+  Initial wavenumber boundary:  2.00000e+03 cm-1  (5.000e+00 um)
+  Final   wavenumber boundary:  3.33333e+04 cm-1  (3.000e-01 um)
+  Wavenumber sampling interval: 1 cm-1
+  Wavenumber sample size:         31334
+  Wavenumber fine-sample size: 67679281
+Wavenumber sampling done.
+
+Reading atmospheric file: '/work/ExoSpectrum/ATM/NO-BIO-0.atm'.
+  Taking species constant parameters from:
+'/root/venv/lib/python3.7/site-packages/pyratbay/data/molecules.dat'.
+    Molecule   Radius  Mass
+               (A)     (gr/mol)
+          N2:  1.820   28.0134
+         H2O:  1.600   18.0153
+         N2O:  1.650   44.0130
+         CH4:  2.000   16.0425
+  Species list:
+    ['N2' 'H2O' 'N2O' 'CH4']
+  Abundances are given by volume mixing ratio.
+  Unit factors: radius: None, pressure: bar, temperature: kelvin
+  Number of layers in the input atmospheric file: 100
+  Atmospheric file pressure limits: 1.00e-06--1.00e+02 bar.
+  Median mean molecular mass: 26.094 g mol-1.
+Read atmosphere done.
+
+Reading line transition info.
+  Read TLI file: '/work/ExoSpectrum/RESULT/HITRAN.tli'.
+  TLI data storage: Little endian
+  TLI version: 6.5.0.
+  TLI wavenumber range (cm-1): [2000.0, 33333.3]
+  Number of data bases: 8
+  Data base name: 'HITRAN CO'
+  Molecule name: 'CO'
+  Temperature range:  1.0 -- 9000.0 K.
+   Isotope: 26,  mass: 27.9949 u,  isotopic ratio: 0.9865
+    Z = [1.01e+00, 2.18e+00, ..., 1.21e+04]
+   Isotope: 36,  mass: 28.9983 u,  isotopic ratio: 0.01108
+    Z = [2.03e+00, 4.53e+00, ..., 2.57e+04]
+   Isotope: 28,  mass: 29.9992 u,  isotopic ratio: 0.001978
+    Z = [1.02e+00, 2.27e+00, ..., 1.29e+04]
+   Isotope: 27,  mass: 28.9991 u,  isotopic ratio: 0.0003679
+    Z = [6.08e+00, 1.34e+01, ..., 7.52e+04]
+   Isotope: 38,  mass: 31.0025 u,  isotopic ratio: 2.223e-05
+    Z = [2.04e+00, 4.72e+00, ..., 2.77e+04]
+   Isotope: 37,  mass: 30.0025 u,  isotopic ratio: 4.133e-06
+    Z = [1.22e+01, 2.78e+01, ..., 1.60e+05]
+   Isotope: 46,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [1.02e+00, 2.34e+00, ..., 1.36e+04]
+   Isotope: 48,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [1.02e+00, 2.44e+00, ..., 1.47e+04]
+   Isotope: 47,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [6.13e+00, 1.44e+01, ..., 8.50e+04]
+  Number of isotopes: 9
+  DB index: 0, Cumulative Iso: 9
+
+  Data base name: 'HITRAN CO2'
+  Molecule name: 'CO2'
+  Temperature range:  1.0 -- 3500.0 K.
+   Isotope: 626,  mass: 43.9898 u,  isotopic ratio: 0.9842
+    Z = [1.17e+00, 4.62e+00, ..., 2.09e+05]
+   Isotope: 636,  mass: 44.9932 u,  isotopic ratio: 0.01106
+    Z = [2.34e+00, 9.25e+00, ..., 4.47e+05]
+   Isotope: 628,  mass: 45.9941 u,  isotopic ratio: 0.003947
+    Z = [2.26e+00, 9.78e+00, ..., 4.35e+05]
+   Isotope: 627,  mass: 44.9940 u,  isotopic ratio: 0.000734
+    Z = [1.33e+01, 5.71e+01, ..., 2.50e+06]
+   Isotope: 638,  mass: 46.9974 u,  isotopic ratio: 4.434e-05
+    Z = [4.52e+00, 1.96e+01, ..., 9.33e+05]
+   Isotope: 637,  mass: 45.9974 u,  isotopic ratio: 8.246e-06
+    Z = [2.65e+01, 1.14e+02, ..., 5.35e+06]
+   Isotope: 828,  mass: 47.9983 u,  isotopic ratio: 3.957e-06
+    Z = [1.25e+00, 5.18e+00, ..., 2.52e+05]
+   Isotope: 728,  mass: 46.9983 u,  isotopic ratio: 1.472e-06
+    Z = [1.39e+01, 6.05e+01, ..., 2.74e+06]
+   Isotope: 727,  mass: 45.9983 u,  isotopic ratio: 1.368e-07
+    Z = [4.12e+01, 1.76e+02, ..., 8.29e+06]
+   Isotope: 838,  mass: 49.0017 u,  isotopic ratio: 4.446e-08
+    Z = [2.50e+00, 1.04e+01, ..., 5.39e+05]
+   Isotope: 837,  mass: 48.0026 u,  isotopic ratio: 1.654e-08
+    Z = [2.78e+01, 1.21e+02, ..., 5.88e+06]
+   Isotope: 737,  mass: 47.0016 u,  isotopic ratio: 1.538e-09
+    Z = [8.25e+01, 3.53e+02, ..., 1.78e+07]
+   Isotope: 646,  mass: 46.0000 u,  isotopic ratio: 0
+    Z = [1.17e+00, 4.62e+00, ..., 2.38e+05]
+  Number of isotopes: 22
+  DB index: 1, Cumulative Iso: 22
+
+  Data base name: 'HITRAN N2'
+  Molecule name: 'N2'
+  Temperature range:  1.0 -- 9000.0 K.
+   Isotope: 44,  mass: 28.0061 u,  isotopic ratio: 0.9927
+    Z = [6.03e+00, 9.85e+00, ..., 3.92e+04]
+   Isotope: 45,  mass: 29.0032 u,  isotopic ratio: 0.007478
+    Z = [6.07e+00, 1.31e+01, ..., 5.42e+04]
+   Isotope: 55,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [1.04e+00, 4.33e+00, ..., 1.88e+04]
+  Number of isotopes: 25
+  DB index: 2, Cumulative Iso: 25
+
+  Data base name: 'HITRAN H2O'
+  Molecule name: 'H2O'
+  Temperature range:  1.0 -- 5000.0 K.
+   Isotope: 161,  mass: 18.0106 u,  isotopic ratio: 0.9973
+    Z = [1.00e+00, 1.01e+00, ..., 8.42e+04]
+   Isotope: 181,  mass: 20.0148 u,  isotopic ratio: 0.001999
+    Z = [1.00e+00, 1.01e+00, ..., 7.81e+04]
+   Isotope: 171,  mass: 19.0148 u,  isotopic ratio: 0.0003719
+    Z = [6.00e+00, 6.06e+00, ..., 4.69e+05]
+   Isotope: 162,  mass: 19.0168 u,  isotopic ratio: 0.0003107
+    Z = [6.00e+00, 6.21e+00, ..., 4.90e+05]
+   Isotope: 182,  mass: 21.0211 u,  isotopic ratio: 6.23e-07
+    Z = [6.00e+00, 6.22e+00, ..., 4.76e+05]
+   Isotope: 172,  mass: 20.0211 u,  isotopic ratio: 1.158e-07
+    Z = [3.60e+01, 3.73e+01, ..., 2.75e+06]
+   Isotope: 262,  mass: 20.0210 u,  isotopic ratio: 2.42e-08
+    Z = [6.00e+00, 6.34e+00, ..., 9.65e+05]
+   Isotope: 282,  mass: 22.0000 u,  isotopic ratio: 0
+    Z = [6.00e+00, 6.35e+00, ..., 9.93e+05]
+   Isotope: 272,  mass: 21.0000 u,  isotopic ratio: 0
+    Z = [3.60e+01, 3.81e+01, ..., 5.87e+06]
+  Number of isotopes: 34
+  DB index: 3, Cumulative Iso: 34
+
+  Data base name: 'HITRAN CH4'
+  Molecule name: 'CH4'
+  Temperature range:  1.0 -- 3500.0 K.
+   Isotope: 211,  mass: 16.0313 u,  isotopic ratio: 0.9883
+    Z = [5.00e+00, 5.44e+00, ..., 7.08e+06]
+   Isotope: 311,  mass: 17.0347 u,  isotopic ratio: 0.0111
+    Z = [1.00e+01, 1.09e+01, ..., 1.24e+07]
+   Isotope: 212,  mass: 17.0376 u,  isotopic ratio: 0.0006158
+    Z = [8.14e+00, 1.83e+01, ..., 7.59e+07]
+   Isotope: 312,  mass: 18.0409 u,  isotopic ratio: 6.918e-06
+    Z = [1.63e+01, 3.67e+01, ..., 1.52e+08]
+  Number of isotopes: 38
+  DB index: 4, Cumulative Iso: 38
+
+  Data base name: 'HITRAN N2O'
+  Molecule name: 'N2O'
+  Temperature range:  1.0 -- 3500.0 K.
+   Isotope: 446,  mass: 44.0011 u,  isotopic ratio: 0.9903
+    Z = [1.83e+01, 7.77e+01, ..., 3.39e+06]
+   Isotope: 456,  mass: 44.9981 u,  isotopic ratio: 0.003641
+    Z = [1.22e+01, 5.18e+01, ..., 3.38e+06]
+   Isotope: 546,  mass: 44.9981 u,  isotopic ratio: 0.003641
+    Z = [1.26e+01, 5.36e+01, ..., 3.39e+06]
+   Isotope: 448,  mass: 46.0053 u,  isotopic ratio: 0.001986
+    Z = [1.92e+01, 8.21e+01, ..., 5.27e+06]
+   Isotope: 447,  mass: 45.0053 u,  isotopic ratio: 0.0003693
+    Z = [1.13e+02, 4.80e+02, ..., 3.02e+07]
+  Number of isotopes: 43
+  DB index: 5, Cumulative Iso: 43
+
+  Data base name: 'HITRAN O3'
+  Molecule name: 'O3'
+  Temperature range:  1.0 -- 3500.0 K.
+   Isotope: 666,  mass: 47.9847 u,  isotopic ratio: 0.9929
+    Z = [7.85e-01, 7.55e+00, ..., 4.53e+06]
+   Isotope: 668,  mass: 49.9890 u,  isotopic ratio: 0.003982
+    Z = [1.66e+00, 1.61e+01, ..., 1.01e+07]
+   Isotope: 686,  mass: 49.9890 u,  isotopic ratio: 0.001991
+    Z = [8.19e-01, 7.88e+00, ..., 5.01e+06]
+   Isotope: 667,  mass: 48.9890 u,  isotopic ratio: 0.0007405
+    Z = [9.69e+00, 9.36e+01, ..., 5.75e+07]
+   Isotope: 676,  mass: 48.9890 u,  isotopic ratio: 0.0003702
+    Z = [4.81e+00, 4.63e+01, ..., 2.86e+07]
+   Isotope: 886,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [1.73e+00, 1.68e+01, ..., 1.12e+07]
+   Isotope: 868,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [8.79e-01, 8.58e+00, ..., 5.61e+06]
+   Isotope: 678,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [1.02e+01, 9.87e+01, ..., 6.38e+07]
+   Isotope: 768,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [1.03e+01, 9.98e+01, ..., 6.40e+07]
+   Isotope: 786,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [1.01e+01, 9.77e+01, ..., 6.36e+07]
+   Isotope: 776,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [5.95e+01, 5.74e+02, ..., 3.63e+08]
+   Isotope: 767,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [3.00e+01, 2.90e+02, ..., 1.82e+08]
+   Isotope: 888,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [9.18e-01, 8.97e+00, ..., 6.23e+06]
+   Isotope: 887,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [1.07e+01, 1.04e+02, ..., 7.10e+07]
+   Isotope: 878,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [5.39e+00, 5.27e+01, ..., 3.56e+07]
+   Isotope: 778,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [6.30e+01, 6.13e+02, ..., 4.05e+08]
+   Isotope: 787,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [3.13e+01, 3.03e+02, ..., 2.02e+08]
+   Isotope: 777,  mass: 0.0000 u,  isotopic ratio: 0
+    Z = [1.84e+02, 1.78e+03, ..., 1.15e+09]
+  Number of isotopes: 61
+  DB index: 6, Cumulative Iso: 61
+
+  Data base name: 'HITRAN CH3Cl'
+  Molecule name: 'CH3Cl'
+  Temperature range:  1.0 -- 3500.0 K.
+   Isotope: 215,  mass: 49.9923 u,  isotopic ratio: 0.7489
+    Z = [2.29e+01, 1.60e+02, ..., 2.45e+09]
+   Isotope: 217,  mass: 51.9894 u,  isotopic ratio: 0.2395
+    Z = [2.32e+01, 1.62e+02, ..., 2.49e+09]
+  Number of isotopes: 63
+  DB index: 7, Cumulative Iso: 63
+
+  Isotope's molecule indices:
+    [-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1  0  0
+    0  1  1  1  1  1  1  1  1  1  3  3  3  3  2  2  2  2  2 -1 -1 -1 -1 -1
+   -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1]
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Warning:
+    The species 'CO' for isotopes ['26' '36' '28' '27' '38' '37' '46' '48' '47']
+is not present in the atmosphere.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Warning:
+    The species 'CO2' for isotopes ['626' '636' '628' '627' '638' '637' '828'
+'728' '727' '838' '837' '737'
+     '646'] is not present in the atmosphere.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Warning:
+    The species 'O3' for isotopes ['666' '668' '686' '667' '676' '886' '868'
+'678' '768' '786' '776' '767'
+     '888' '887' '878' '778' '787' '777'] is not present in the atmosphere.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  Warning:
+    The species 'CH3Cl' for isotopes ['215' '217'] is not present in the
+atmosphere.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+  There are 1,106,105 line transitions in TLI file.
+  Found initial transition (       0):      2002.1150 cm-1
+  Found final   transition (     745):      8464.8820 cm-1
+    Read         746 transitions for isotope  0.
+  Found initial transition (     746):      2000.2992 cm-1
+  Found final   transition (    1342):      6278.2472 cm-1
+    Read         597 transitions for isotope  1.
+  Found initial transition (    1343):      2000.8881 cm-1
+  Found final   transition (    1919):      6266.5774 cm-1
+    Read         577 transitions for isotope  2.
+  Found initial transition (    1920):      2001.2378 cm-1
+  Found final   transition (    2480):      6338.0612 cm-1
+    Read         561 transitions for isotope  3.
+  Found initial transition (    2481):      2002.0259 cm-1
+  Found final   transition (    2993):      6123.2942 cm-1
+    Read         513 transitions for isotope  4.
+  Found initial transition (    2994):      2003.0856 cm-1
+  Found final   transition (    3491):      6196.5511 cm-1
+    Read         498 transitions for isotope  5.
+  Found initial transition (    3492):      2000.1141 cm-1
+  Found final   transition (  132199):     12784.0564 cm-1
+    Read     128,708 transitions for isotope  9.
+  Found initial transition (  132200):      2000.1574 cm-1
+  Found final   transition (  182752):     12462.0456 cm-1
+    Read      50,553 transitions for isotope 10.
+  Found initial transition (  182753):      2000.1471 cm-1
+  Found final   transition (  265261):      9557.3981 cm-1
+    Read      82,509 transitions for isotope 11.
+  Found initial transition (  265262):      2000.1052 cm-1
+  Found final   transition (  314778):      9599.3166 cm-1
+    Read      49,517 transitions for isotope 12.
+  Found initial transition (  314779):      2000.0955 cm-1
+  Found final   transition (  331180):      6744.1585 cm-1
+    Read      16,402 transitions for isotope 13.
+  Found initial transition (  331181):      2175.6696 cm-1
+  Found final   transition (  333217):      6768.6431 cm-1
+    Read       2,037 transitions for isotope 14.
+  Found initial transition (  333218):      2000.3931 cm-1
+  Found final   transition (  337739):      8160.4387 cm-1
+    Read       4,522 transitions for isotope 15.
+  Found initial transition (  337740):      2261.1711 cm-1
+  Found final   transition (  338406):      5046.8753 cm-1
+    Read         667 transitions for isotope 16.
+  Found initial transition (  338407):      2010.5683 cm-1
+  Found final   transition (  341068):      6932.9799 cm-1
+    Read       2,662 transitions for isotope 17.
+  Found initial transition (  341069):      4599.2388 cm-1
+  Found final   transition (  341188):      4887.2903 cm-1
+    Read         120 transitions for isotope 18.
+  Found initial transition (  341189):      2001.6885 cm-1
+  Found final   transition (  343168):      9354.2000 cm-1
+    Read       1,980 transitions for isotope 22.
+  Found initial transition (  343169):      2000.4444 cm-1
+  Found final   transition (  343398):      2577.7455 cm-1
+    Read         230 transitions for isotope 23.
+  Found initial transition (  343399):      2000.3952 cm-1
+  Found final   transition (  470084):     25710.8255 cm-1
+    Read     126,686 transitions for isotope 25.
+  Found initial transition (  470085):      2000.7835 cm-1
+  Found final   transition (  504518):     19917.6178 cm-1
+    Read      34,434 transitions for isotope 26.
+  Found initial transition (  504519):      2000.7954 cm-1
+  Found final   transition (  527703):     19945.2572 cm-1
+    Read      23,185 transitions for isotope 27.
+  Found initial transition (  527704):      2450.3977 cm-1
+  Found final   transition (  537300):     22707.8245 cm-1
+    Read       9,597 transitions for isotope 28.
+  Found initial transition (  537301):      2586.9104 cm-1
+  Found final   transition (  537519):      3824.7175 cm-1
+    Read         219 transitions for isotope 29.
+  Found initial transition (  537520):      2097.8425 cm-1
+  Found final   transition (  761563):     11501.8725 cm-1
+    Read     224,044 transitions for isotope 34.
+  Found initial transition (  761564):      2000.0554 cm-1
+  Found final   transition (  793437):     11318.5369 cm-1
+    Read      31,874 transitions for isotope 35.
+  Found initial transition (  793438):      2000.9174 cm-1
+  Found final   transition (  839409):      6510.3242 cm-1
+    Read      45,972 transitions for isotope 36.
+  Found initial transition (  839410):      2000.5622 cm-1
+  Found final   transition (  861178):      7796.6331 cm-1
+    Read      21,769 transitions for isotope 38.
+  Found initial transition (  861179):      2096.0581 cm-1
+  Found final   transition (  863846):      5085.7142 cm-1
+    Read       2,668 transitions for isotope 39.
+  Found initial transition (  863847):      2119.7274 cm-1
+  Found final   transition (  866689):      4703.0486 cm-1
+    Read       2,843 transitions for isotope 40.
+  Found initial transition (  866690):      2139.3245 cm-1
+  Found final   transition (  869364):      4671.9160 cm-1
+    Read       2,675 transitions for isotope 41.
+  Found initial transition (  869365):      2149.8074 cm-1
+  Found final   transition (  870517):      4429.2594 cm-1
+    Read       1,153 transitions for isotope 42.
+  Found initial transition (  870518):      2000.0007 cm-1
+  Found final   transition ( 1008791):      6996.6808 cm-1
+    Read     138,274 transitions for isotope 43.
+  Found initial transition ( 1008792):      2000.0816 cm-1
+  Found final   transition ( 1032312):      2767.8741 cm-1
+    Read      23,521 transitions for isotope 44.
+  Found initial transition ( 1032313):      2000.0097 cm-1
+  Found final   transition ( 1041134):      2739.2893 cm-1
+    Read       8,822 transitions for isotope 45.
+  Found initial transition ( 1041135):      2049.9174 cm-1
+  Found final   transition ( 1042907):      2121.4756 cm-1
+    Read       1,773 transitions for isotope 46.
+  Found initial transition ( 1042908):      2031.4516 cm-1
+  Found final   transition ( 1043767):      2100.8045 cm-1
+    Read         860 transitions for isotope 47.
+  Found initial transition ( 1043768):      2000.5478 cm-1
+  Found final   transition ( 1077284):      3197.7589 cm-1
+    Read      33,517 transitions for isotope 61.
+  Found initial transition ( 1077285):      2000.0421 cm-1
+  Found final   transition ( 1106104):      3197.9611 cm-1
+    Read      28,820 transitions for isotope 62.
+  Read a total of 1,106,105 line transitions.
+Line-transition done.
+
+Generating atmospheric profile sample.
+  Reference pressure: 1.000e-01 bar.
+  Reference radius:      0.3 rjup.
+  Hill radius:           2.3 rjup.
+  User pressure boundaries: 1.00e-06--1.00e+02 bar.
+  Radius array (rjup) =   [0.334, 0.334, 0.334, 0.334, 0.334, 0.333, 0.333,
+    0.333, 0.333, 0.333, 0.333, 0.333, 0.333, 0.333, 0.333, 0.333, 0.333, 0.333,
+    0.333, 0.333, 0.333, 0.332, 0.332, 0.332, 0.332, 0.332, 0.332, 0.332, 0.332,
+    0.332, 0.332, 0.332, 0.332, 0.332, 0.332, 0.332, 0.332, 0.332, 0.331, 0.331,
+    0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331, 0.331,
+    0.331, 0.331, 0.331, 0.330, 0.330, 0.330, 0.330, 0.330, 0.330, 0.330, 0.330,
+    0.330, 0.330, 0.330, 0.330, 0.330, 0.330, 0.330, 0.330, 0.330, 0.329, 0.329,
+    0.329, 0.329, 0.329, 0.329, 0.329, 0.329, 0.329, 0.329, 0.329, 0.329, 0.329,
+    0.329, 0.329, 0.328, 0.328, 0.328, 0.328, 0.328, 0.328, 0.328, 0.328, 0.328,
+    0.328, 0.328, 0.328, 0.328, 0.328]
+  Valid upper/lower radius boundaries:    0.33377 - 0.32754 rjup.
+  Valid lower/higher pressure boundaries: 1.00e-06 - 1.00e+02 bar.
+  Number of valid model layers: 100.
+  Number of isotopes: 63
+    Interpolating (isotope ID 0) partition function.
+    Interpolating (isotope ID 1) partition function.
+    Interpolating (isotope ID 2) partition function.
+    Interpolating (isotope ID 3) partition function.
+    Interpolating (isotope ID 4) partition function.
+    Interpolating (isotope ID 5) partition function.
+    Interpolating (isotope ID 6) partition function.
+    Interpolating (isotope ID 7) partition function.
+    Interpolating (isotope ID 8) partition function.
+    Interpolating (isotope ID 9) partition function.
+    Interpolating (isotope ID 10) partition function.
+    Interpolating (isotope ID 11) partition function.
+    Interpolating (isotope ID 12) partition function.
+    Interpolating (isotope ID 13) partition function.
+    Interpolating (isotope ID 14) partition function.
+    Interpolating (isotope ID 15) partition function.
+    Interpolating (isotope ID 16) partition function.
+    Interpolating (isotope ID 17) partition function.
+    Interpolating (isotope ID 18) partition function.
+    Interpolating (isotope ID 19) partition function.
+    Interpolating (isotope ID 20) partition function.
+    Interpolating (isotope ID 21) partition function.
+    Interpolating (isotope ID 22) partition function.
+    Interpolating (isotope ID 23) partition function.
+    Interpolating (isotope ID 24) partition function.
+    Interpolating (isotope ID 25) partition function.
+    Interpolating (isotope ID 26) partition function.
+    Interpolating (isotope ID 27) partition function.
+    Interpolating (isotope ID 28) partition function.
+    Interpolating (isotope ID 29) partition function.
+    Interpolating (isotope ID 30) partition function.
+    Interpolating (isotope ID 31) partition function.
+    Interpolating (isotope ID 32) partition function.
+    Interpolating (isotope ID 33) partition function.
+    Interpolating (isotope ID 34) partition function.
+    Interpolating (isotope ID 35) partition function.
+    Interpolating (isotope ID 36) partition function.
+    Interpolating (isotope ID 37) partition function.
+    Interpolating (isotope ID 38) partition function.
+    Interpolating (isotope ID 39) partition function.
+    Interpolating (isotope ID 40) partition function.
+    Interpolating (isotope ID 41) partition function.
+    Interpolating (isotope ID 42) partition function.
+    Interpolating (isotope ID 43) partition function.
+    Interpolating (isotope ID 44) partition function.
+    Interpolating (isotope ID 45) partition function.
+    Interpolating (isotope ID 46) partition function.
+    Interpolating (isotope ID 47) partition function.
+    Interpolating (isotope ID 48) partition function.
+    Interpolating (isotope ID 49) partition function.
+    Interpolating (isotope ID 50) partition function.
+    Interpolating (isotope ID 51) partition function.
+    Interpolating (isotope ID 52) partition function.
+    Interpolating (isotope ID 53) partition function.
+    Interpolating (isotope ID 54) partition function.
+    Interpolating (isotope ID 55) partition function.
+    Interpolating (isotope ID 56) partition function.
+    Interpolating (isotope ID 57) partition function.
+    Interpolating (isotope ID 58) partition function.
+    Interpolating (isotope ID 59) partition function.
+    Interpolating (isotope ID 60) partition function.
+    Interpolating (isotope ID 61) partition function.
+    Interpolating (isotope ID 62) partition function.
+Make atmosphere done.
+
+Calculate LBL Voigt profiles:
+  Doppler width limits: 1.1e-03 -- 1.6e-01 cm-1 (40 samples).
+  Lorentz width limits: 2.1e-08 -- 1.6e+01 cm-1 (40 samples).
+  Voigt half-sizes:
+  [[  233   265   302 ... 27259 31002 35260]
+   [  233   265   302 ... 27259 31002 35260]
+   [  233   265   302 ... 27259 31002 35260]
+   ...
+   [54000     0     0 ...     0     0     0]
+   [54000     0     0 ...     0     0     0]
+   [54000     0     0 ...     0     0     0]]
+  Calculating Voigt profiles with max extent: 100.0 HWHM
+  and fixed cutoff: 25.0 cm-1.
+  Voigt indices:
+  [[       0      467      998 ...   393621   448140   510145]
+   [  580666   581133   581664 ...   974287  1028806  1090811]
+   [ 1161332  1161799  1162330 ...  1554955  1609474  1671479]
+   ...
+   [25303233 25303233 25303233 ... 25303233 25303233 25303233]
+   [25411234 25411234 25411234 ... 25411234 25411234 25411234]
+   [25519235 25519235 25519235 ... 25519235 25519235 25519235]]
+Voigt grid pre-calculation done.
+
+Setup Alkali opacity models.
+
+No extinction-coefficient table requested.
+
+Reading cross-section files.
+  No CS files to read.
+
+Begin CS interpolation.
+Cross-section interpolate done.
+
+Begin optical-depth calculation.
+  Calculating extinction at layer   1/100 (T= 500.0 K, p=1.0e-06 bar).
+  Calculating extinction at layer   2/100 (T= 500.0 K, p=1.2e-06 bar).
+  Calculating extinction at layer   3/100 (T= 500.0 K, p=1.5e-06 bar).
+  Calculating extinction at layer   4/100 (T= 500.0 K, p=1.7e-06 bar).
+  Calculating extinction at layer   5/100 (T= 500.0 K, p=2.1e-06 bar).
+  Calculating extinction at layer   6/100 (T= 500.0 K, p=2.5e-06 bar).
+  Calculating extinction at layer   7/100 (T= 500.0 K, p=3.1e-06 bar).
+  Calculating extinction at layer   8/100 (T= 500.0 K, p=3.7e-06 bar).
+  Calculating extinction at layer   9/100 (T= 500.0 K, p=4.4e-06 bar).
+  Calculating extinction at layer  10/100 (T= 500.0 K, p=5.3e-06 bar).
+  Calculating extinction at layer  11/100 (T= 500.0 K, p=6.4e-06 bar).
+  Calculating extinction at layer  12/100 (T= 500.0 K, p=7.7e-06 bar).
+  Calculating extinction at layer  13/100 (T= 500.0 K, p=9.3e-06 bar).
+  Calculating extinction at layer  14/100 (T= 500.0 K, p=1.1e-05 bar).
+  Calculating extinction at layer  15/100 (T= 500.0 K, p=1.4e-05 bar).
+  Calculating extinction at layer  16/100 (T= 500.0 K, p=1.6e-05 bar).
+  Calculating extinction at layer  17/100 (T= 500.0 K, p=2.0e-05 bar).
+  Calculating extinction at layer  18/100 (T= 500.0 K, p=2.4e-05 bar).
+  Calculating extinction at layer  19/100 (T= 500.0 K, p=2.8e-05 bar).
+  Calculating extinction at layer  20/100 (T= 500.0 K, p=3.4e-05 bar).
+  Calculating extinction at layer  21/100 (T= 500.0 K, p=4.1e-05 bar).
+  Calculating extinction at layer  22/100 (T= 500.0 K, p=5.0e-05 bar).
+  Calculating extinction at layer  23/100 (T= 500.0 K, p=6.0e-05 bar).
+  Calculating extinction at layer  24/100 (T= 500.0 K, p=7.2e-05 bar).
+  Calculating extinction at layer  25/100 (T= 500.0 K, p=8.7e-05 bar).
+  Calculating extinction at layer  26/100 (T= 500.0 K, p=1.0e-04 bar).
+  Calculating extinction at layer  27/100 (T= 500.0 K, p=1.3e-04 bar).
+  Calculating extinction at layer  28/100 (T= 500.0 K, p=1.5e-04 bar).
+  Calculating extinction at layer  29/100 (T= 500.0 K, p=1.8e-04 bar).
+  Calculating extinction at layer  30/100 (T= 500.0 K, p=2.2e-04 bar).
+  Calculating extinction at layer  31/100 (T= 500.0 K, p=2.7e-04 bar).
+  Calculating extinction at layer  32/100 (T= 500.0 K, p=3.2e-04 bar).
+  Calculating extinction at layer  33/100 (T= 500.0 K, p=3.9e-04 bar).
+  Calculating extinction at layer  34/100 (T= 500.0 K, p=4.6e-04 bar).
+  Calculating extinction at layer  35/100 (T= 500.0 K, p=5.6e-04 bar).
+  Calculating extinction at layer  36/100 (T= 500.0 K, p=6.7e-04 bar).
+  Calculating extinction at layer  37/100 (T= 500.0 K, p=8.1e-04 bar).
+  Calculating extinction at layer  38/100 (T= 500.0 K, p=9.8e-04 bar).
+  Calculating extinction at layer  39/100 (T= 500.0 K, p=1.2e-03 bar).
+  Calculating extinction at layer  40/100 (T= 500.0 K, p=1.4e-03 bar).
+  Calculating extinction at layer  41/100 (T= 500.0 K, p=1.7e-03 bar).
+  Calculating extinction at layer  42/100 (T= 500.0 K, p=2.1e-03 bar).
+  Calculating extinction at layer  43/100 (T= 500.0 K, p=2.5e-03 bar).
+  Calculating extinction at layer  44/100 (T= 500.0 K, p=3.0e-03 bar).
+  Calculating extinction at layer  45/100 (T= 500.0 K, p=3.6e-03 bar).
+  Calculating extinction at layer  46/100 (T= 500.0 K, p=4.3e-03 bar).
+  Calculating extinction at layer  47/100 (T= 500.0 K, p=5.2e-03 bar).
+  Calculating extinction at layer  48/100 (T= 500.0 K, p=6.3e-03 bar).
+  Calculating extinction at layer  49/100 (T= 500.0 K, p=7.6e-03 bar).
+  Calculating extinction at layer  50/100 (T= 500.0 K, p=9.1e-03 bar).
+  Calculating extinction at layer  51/100 (T= 500.0 K, p=1.1e-02 bar).
+  Calculating extinction at layer  52/100 (T= 500.0 K, p=1.3e-02 bar).
+  Calculating extinction at layer  53/100 (T= 500.0 K, p=1.6e-02 bar).
+  Calculating extinction at layer  54/100 (T= 500.0 K, p=1.9e-02 bar).
+  Calculating extinction at layer  55/100 (T= 500.0 K, p=2.3e-02 bar).
+  Calculating extinction at layer  56/100 (T= 500.0 K, p=2.8e-02 bar).
+  Calculating extinction at layer  57/100 (T= 500.0 K, p=3.4e-02 bar).
+  Calculating extinction at layer  58/100 (T= 500.0 K, p=4.0e-02 bar).
+  Calculating extinction at layer  59/100 (T= 500.0 K, p=4.9e-02 bar).
+  Calculating extinction at layer  60/100 (T= 500.0 K, p=5.9e-02 bar).
+  Calculating extinction at layer  61/100 (T= 500.0 K, p=7.1e-02 bar).
+  Calculating extinction at layer  62/100 (T= 500.0 K, p=8.5e-02 bar).
+  Calculating extinction at layer  63/100 (T= 500.0 K, p=1.0e-01 bar).
+  Calculating extinction at layer  64/100 (T= 500.0 K, p=1.2e-01 bar).
+  Calculating extinction at layer  65/100 (T= 500.0 K, p=1.5e-01 bar).
+  Calculating extinction at layer  66/100 (T= 500.0 K, p=1.8e-01 bar).
+  Calculating extinction at layer  67/100 (T= 500.0 K, p=2.2e-01 bar).
+  Calculating extinction at layer  68/100 (T= 500.0 K, p=2.6e-01 bar).
+  Calculating extinction at layer  69/100 (T= 500.0 K, p=3.1e-01 bar).
+  Calculating extinction at layer  70/100 (T= 500.0 K, p=3.8e-01 bar).
+  Calculating extinction at layer  71/100 (T= 500.0 K, p=4.5e-01 bar).
+  Calculating extinction at layer  72/100 (T= 500.0 K, p=5.5e-01 bar).
+  Calculating extinction at layer  73/100 (T= 500.0 K, p=6.6e-01 bar).
+  Calculating extinction at layer  74/100 (T= 500.0 K, p=7.9e-01 bar).
+  Calculating extinction at layer  75/100 (T= 500.0 K, p=9.5e-01 bar).
+  Calculating extinction at layer  76/100 (T= 500.0 K, p=1.1e+00 bar).
+  Calculating extinction at layer  77/100 (T= 500.0 K, p=1.4e+00 bar).
+  Calculating extinction at layer  78/100 (T= 500.0 K, p=1.7e+00 bar).
+  Calculating extinction at layer  79/100 (T= 500.0 K, p=2.0e+00 bar).
+  Calculating extinction at layer  80/100 (T= 500.0 K, p=2.4e+00 bar).
+  Calculating extinction at layer  81/100 (T= 500.0 K, p=2.9e+00 bar).
+  Calculating extinction at layer  82/100 (T= 500.0 K, p=3.5e+00 bar).
+  Calculating extinction at layer  83/100 (T= 500.0 K, p=4.2e+00 bar).
+  Calculating extinction at layer  84/100 (T= 500.0 K, p=5.1e+00 bar).
+  Calculating extinction at layer  85/100 (T= 500.0 K, p=6.1e+00 bar).
+  Calculating extinction at layer  86/100 (T= 500.0 K, p=7.4e+00 bar).
+  Calculating extinction at layer  87/100 (T= 500.0 K, p=8.9e+00 bar).
+  Calculating extinction at layer  88/100 (T= 500.0 K, p=1.1e+01 bar).
+  Calculating extinction at layer  89/100 (T= 500.0 K, p=1.3e+01 bar).
+  Calculating extinction at layer  90/100 (T= 500.0 K, p=1.6e+01 bar).
+  Calculating extinction at layer  91/100 (T= 500.0 K, p=1.9e+01 bar).
+  Calculating extinction at layer  92/100 (T= 500.0 K, p=2.3e+01 bar).
+  Calculating extinction at layer  93/100 (T= 500.0 K, p=2.7e+01 bar).
+  Calculating extinction at layer  94/100 (T= 500.0 K, p=3.3e+01 bar).
+  Calculating extinction at layer  95/100 (T= 500.0 K, p=3.9e+01 bar).
+  Calculating extinction at layer  96/100 (T= 500.0 K, p=4.8e+01 bar).
+  Calculating extinction at layer  97/100 (T= 500.0 K, p=5.7e+01 bar).
+  Calculating extinction at layer  98/100 (T= 500.0 K, p=6.9e+01 bar).
+  Calculating extinction at layer  99/100 (T= 500.0 K, p=8.3e+01 bar).
+  Calculating extinction at layer 100/100 (T= 500.0 K, p=1.0e+02 bar).
+Optical depth done.
+
+Calculate the planetary spectrum.
+  Computed transmission spectrum:
+'/work/ExoSpectrum/RESULT/transmission_spectrum-.dat'.
+Done.
+
+Timestamps (s):
+init      :   0.001640
+wn sample :   0.888065
+read atm  :   0.079286
+read tli  :   1.942040
+atm sample:   0.188275
+voigt     :   0.736422
+ext table :   0.001452
+read cs   :   0.001454
+interp cs :   0.010756
+cloud+ray :   0.016662
+alkali    :   0.040751
+odepth    : 184.410108
+spectrum  :   0.132517
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  There were 5 warnings raised.  See
+'/work/ExoSpectrum/RESULT/warnings_transmission_spectrum-.log'.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
